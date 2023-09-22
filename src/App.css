@@ -1,38 +1,171 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, root {
+  background-color: #121212;
 }
 
-.App-logo {
-  height: 40vmin;
+@font-face {
+  font-family: 'NormandyBeachExpandedItalic';
+  src: local('NormandyBeachExpandedItalic'), url('./fonts/NormandyBeachExpandedItalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'NormandyBeachTwotoneItalic';
+  src: local('NormandyBeachTwotoneItalic'), url('./fonts/NormandyBeachTwotoneItalic.otf') format('opentype');
+}
+
+.locked {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.nbexpanded {
+  font-family: NormandyBeachExpandedItalic;
+}
+
+.nbtwotone {
+  font-family: NormandyBeachTwotoneItalic;
+}
+
+.orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.coolbg {
+  background: url('./assets/coolgradient.png');
+  background-size: contain;
+  background-attachment: relative;
+  background-position: right -10px;
+  background-repeat:repeat-x;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.flyin {
+  animation: flyinanimation steps(10, start) 500ms;
+}
+
+.expand {
+  width: 100%;
+  animation: expandanimation steps(5, start) 500ms;
+}
+
+.blink {
+  animation: blink-animation 0.75s steps(2, start) infinite;
+  -webkit-animation: blink-animation 0.75s steps(2, start) infinite;
+}
+
+.fadein {
+  animation: fade-animation 1.5s steps(20, start);
+}
+
+.flyup {
+  animation: fly-animation 1.5s steps(20, start);
+}
+
+.retroloader div:nth-child(1) {
+  animation: pulse 1.5s steps(3, start) infinite;
+  animation-delay: 1s;
+}
+.retroloader div:nth-child(2) {
+  animation: pulse 1.5s steps(3, start) infinite;
+  animation-delay: 0.5s;
+}
+.retroloader div:nth-child(3) {
+  animation: pulse 1.5s steps(3, start) infinite;
+  animation-delay: 0s;
+}
+
+.list-animation {
+  animation: row-animation steps(5, start) 500ms;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 30%)
+}
+textarea:focus, input:focus{
+  outline: none;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 10%
+  }
+  50% {
+    opacity: 100%
+  }
+  100% {
+    opacity: 50%
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes flyinanimation {
+  0% {
+    margin-right: 50vw;
+    transform: skew(135deg, 0deg);
+    opacity: 0;
   }
+
+  75% {
+    margin-left: 0vw;
+    opacity: 1;
+  }
+
+  100% {
+    transform: skew(0deg, 0deg)
+  }
+}
+
+@keyframes fade-animation {
+  0% {
+    translate: 0px -20vh;
+    opacity: 0;
+  }
+}
+
+@keyframes fly-animation {
+  0% {
+    translate: 0px 50vh;
+  }
+}
+
+@keyframes expandanimation {
+  0% {
+    width: 0%;
+  }
+}
+
+@keyframes blink-animation {
   to {
-    transform: rotate(360deg);
+    visibility: hidden;
   }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+@keyframes row-animation {
+  0% {
+    translate: 20vw 0;
+    opacity: 0%;
+  }
+  100% {
+    translate: 0vw 0;
+    opacity: 100%;
+  }
+}
+
+.button:hover {
+  text-shadow: rgba(249, 200, 14) 0px 0 15px;;
 }
